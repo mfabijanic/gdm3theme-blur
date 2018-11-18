@@ -14,11 +14,11 @@ GDM3 Theme Blur is based on themes:<br>
   • <a href="https://www.gnome-look.org/p/1207015/" target="_blank">
   <img src="https://cn.opendesktop.org/cache/85x85-crop/img/0/8/7/0/6e0977f47f85823d318d11d5eac795aaf55e.png"
   alt="High Ubunterra">
-  High Ubunterra</a> 1.8 and<br>
+  High Ubunterra</a> 1.8<br>
   • <a href="https://www.opendesktop.org/p/1241489/" target="_blank">
   <img src="https://cn.opendesktop.org/cache/85x85-crop/img/f/2/f/0/387a128dcff69e8d49716644f271232a2b40.png"
   alt="Ocean Blue">
-  Ocean Blue</a> 1.0.<br>
+  Ocean Blue</a> 1.0<br>
 </h4<br><br><br>
 
 <p align="left">
