@@ -19,9 +19,9 @@ GDM3 Theme Blur is based on themes:<br>
   <img src="https://cn.opendesktop.org/cache/85x85-crop/img/f/2/f/0/387a128dcff69e8d49716644f271232a2b40.png"
   alt="Ocean Blue">
   Ocean Blue</a> 1.0.<br>
-</h4<br><br>
+</h4<br><br><br>
 
-<p align="left>
+<p align="left">
   • <a href="#prerequisites">Prerequisites</a><br>
   • <a href="#installation">Installation</a><br>
   • <a href="#how-to-use">How To Use</a><br>
@@ -67,6 +67,7 @@ Extract downloaded file gdm3theme-blur.tar.xz and run setup script
   $ ./setup.sh -i
 
 
+
 Setup script will convert your Gnome wallpaper and set it as blured Lock
 screen picture. You can uninstall and install again and every time it will
 convert current background picture.
@@ -75,6 +76,7 @@ convert current background picture.
 Uninstall
 
   $ ./setup.sh -u
+
 
 
 # <a name="#how-to-use">How to use</a>
