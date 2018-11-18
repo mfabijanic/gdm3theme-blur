@@ -1,0 +1,99 @@
+#!/bin/bash
+
+# App Name
+app_name="gdm3theme-blur"
+# App cache directory
+cache_dir="$HOME/.cache/$app_name"
+
+
+# Background Picture
+background_picture="${cache_dir}/${app_name}-background.jpg"
+# Converted for Screensaver Picture
+screensaver_picture="$cache_dir/${app_name}-screensaver.jpg"
+# Converted blurry image for Lockscreen wallpaper
+lockscreen_wallpaper="/usr/share/backgrounds/${app_name}-lockscreen.jpg"
+
+
+# Lockscreen Wallpaper Blur Geometry
+[[ -z "$blur_geometry_lockscreen" ]] && blur_geometry_lockscreen="0x5"
+# Screensaver Picture Blur Geometry
+[[ -z "$blur_geometry_screensaver" ]] && blur_geometry_screensaver="0x15"
+
+
+convert_picture() {
+  blur_geometry="$1"
+  src_picture="$2"
+  dst_picture="$3"
+  sudo="$4"
+
+  # if arg4 is sudo
+  [[ "$sudo" = "sudo" ]] && sudo="/usr/bin/sudo"
+  [[ "$sudo" = "pkexec" ]] && sudo="/usr/bin/pkexec"
+
+  # Make your wallpaper blurry
+  # /usr/share/backgrounds/LOCKSCREEN_WALLPAPER_NAME
+  echo "Convert Wallpaper:          \"${src_picture}\" -> \"${dst_picture}\""
+  # Make your wallpaper blurry
+  if [[ $gui -eq 1 ]]; then
+    ( $sudo convert -blur ${blur_geometry} "${src_picture}" "${dst_picture}" ) \
+      | zenity --progress --pulsate --auto-close --no-cancel --title="Image Converter" --text="Making blurry picture: ${dst_picture}" 2>/dev/null
+    [ $? -eq -1 ] && zenity --error --text="Image Converter canceled."
+    convert_status=$?
+  else
+    $sudo convert -blur ${blur_geometry} "${src_picture}" "${dst_picture}"
+    convert_status=$?
+  fi
+  if [ $convert_status -eq -1 ]; then
+    zenity --error --text="Image Converter canceled."
+  fi
+  return $convert_status
+}
+
+
+if [[ -z "$cache_dir" ]]; then
+  echo "ERROR: variable \$cache_dir isn't defined in script. This is DANGEROUS."
+  exit 1
+fi
+
+[ ! -d ${cache_dir} ] && mkdir -p ${cache_dir}
+
+# If zenity is in $PATH and DISPLAY is set then user GUI
+(which zenity &>/dev/null) && [ ! -z "$DISPLAY" ] && gui=1
+
+# Copy selected file to temp folder "~/.cache/gdm3theme-blur/"
+while [ $# -gt 0 ]; do
+  picture="$1"
+  if [ ! -f "${picture}" ]; then
+    echo "${picture} isn't file. Aborting.}"
+    exit 1
+  fi
+
+  # For Wallpaper
+  echo "Copy Picture:               \"$picture\" -> \"$background_picture\""
+  cp "${picture}" "${background_picture}"
+
+  shift
+
+  background_picture_filename="$(echo "$picture" | awk -F "/" '{print $NF}')"
+
+  # Make your wallpaper blurry
+  # Locksceen Wallpaper: example /usr/share/backgrounds/LOCKSCREEN_WALLPAPER.jpg
+  convert_picture "${blur_geometry_lockscreen}" "$background_picture" "$lockscreen_wallpaper" pkexec
+  convert_status_lockscreen=$?
+  # Screensaver Picture: example $HOME/.cache/gdm3theme-blur/picture.jpg
+  convert_picture "${blur_geometry_screensaver}" "$background_picture" "$screensaver_picture"
+  convert_status_screensaver=$?
+
+  # Set Lockscreen Picture
+  if [[ $convert_status_lockscreen -ne 0 ]]; then
+    echo "ERROR:                    Lockscreen Picture conversion failed."
+    exit 1
+  fi
+  # Set Screensaver Picture
+  if [[ $convert_status_screensaver -eq 0 ]]; then
+    gsettings set org.gnome.desktop.screensaver picture-uri "file://${screensaver_picture}"
+  fi
+  # Set Background Picture
+  gsettings set org.gnome.desktop.background picture-uri "file://${background_picture}"
+done
+
