@@ -9,7 +9,7 @@
   <br>
 </h1>
 
-<h4 align="center">
+<h4 align="left">
 GDM3 Theme Blur is based on themes:<br>
   • <a href="https://www.gnome-look.org/p/1207015/" target="_blank">
   <img src="https://cn.opendesktop.org/cache/85x85-crop/img/0/8/7/0/6e0977f47f85823d318d11d5eac795aaf55e.png"
@@ -19,9 +19,9 @@ GDM3 Theme Blur is based on themes:<br>
   <img src="https://cn.opendesktop.org/cache/85x85-crop/img/f/2/f/0/387a128dcff69e8d49716644f271232a2b40.png"
   alt="Ocean Blue">
   Ocean Blue</a> 1.0.<br>
-</h4<br>
+</h4<br><br>
 
-<p align="center">
+<p align="left>
   • <a href="#prerequisites">Prerequisites</a><br>
   • <a href="#installation">Installation</a><br>
   • <a href="#how-to-use">How To Use</a><br>
