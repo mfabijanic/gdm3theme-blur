@@ -3,29 +3,29 @@
 <h1 align="center">
   <br>
   <a href="http://www.github.com/mfabijanic/gdm3theme-blur">
-  <img src="https://raw.githubusercontent.com/mfabijanic/mfabijanic.github.io/master/gdm3theme-blur/gdm3theme-blur-01.png" alt="GDM3 Theme Blur" width="200"></a>
+  <img src="https://raw.githubusercontent.com/mfabijanic/mfabijanic.github.io/master/gdm3theme-blur/gdm3theme-blur-01.png" alt="GDM3 Theme Blur" width="800"></a>
   <br>
   GDM3 Theme Blur
   <br>
 </h1>
 
 <h4 align="center">
-GDM3 Theme Blur is based on themes:
+GDM3 Theme Blur is based on themes:<br>
   • <a href="https://www.gnome-look.org/p/1207015/" target="_blank">
   <img src="https://cn.opendesktop.org/cache/85x85-crop/img/0/8/7/0/6e0977f47f85823d318d11d5eac795aaf55e.png"
   alt="High Ubunterra">
-  High Ubunterra</a> 1.8 and
+  High Ubunterra</a> 1.8 and<br>
   • <a href="https://www.opendesktop.org/p/1241489/" target="_blank">
   <img src="https://cn.opendesktop.org/cache/85x85-crop/img/f/2/f/0/387a128dcff69e8d49716644f271232a2b40.png"
   alt="Ocean Blue">
-  Ocean Blue</a> 1.0.
-</h4>
+  Ocean Blue</a> 1.0.<br>
+</h4<br>
 
 <p align="center">
-  • <a href="#prerequisites">Prerequisites</a>
-  • <a href="#installation">Installation</a>
-  • <a href="#how-to-use">How To Use</a>
-  • <a href="#picture-setup-logic">Picture Setup Logic</a>
+  • <a href="#prerequisites">Prerequisites</a><br>
+  • <a href="#installation">Installation</a><br>
+  • <a href="#how-to-use">How To Use</a><br>
+  • <a href="#picture-setup-logic">Picture Setup Logic</a><br>
 </p>
 
 
@@ -61,8 +61,11 @@ ImageMagic: convert
 Extract downloaded file gdm3theme-blur.tar.xz and run setup script
 
   $ tar -xJf gdm3theme-blur.tar.xz
+
   $ cd gdm3theme-blur
+
   $ ./setup.sh -i
+
 
 Setup script will convert your Gnome wallpaper and set it as blured Lock
 screen picture. You can uninstall and install again and every time it will
@@ -70,6 +73,7 @@ convert current background picture.
 
 
 Uninstall
+
   $ ./setup.sh -u
 
 
