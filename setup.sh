@@ -163,13 +163,18 @@ install() {
   fi
   
   # Nautilus Script SetAsWallpaper
-  if [[ ! -d ~/.local/share/nautilus/scripts/ ]]; then
-    echo "~/.local/share/nautilus/scripts/ doesn't exists. Make directory."
+  if [[ ! -d $HOME/.local/share/nautilus/scripts/ ]]; then
+    echo "$HOME/.local/share/nautilus/scripts/ doesn't exists. Make directory."
     mkdir -p "$HOME"/.local/share/nautilus/scripts/
   fi
   log_info "Copy Nautilus script:       \"SetAsWallpaper\" -> \"$HOME/.local/share/nautilus/scripts/\"\n"
   cp "$work"/SetAsWallpaper ~/.local/share/nautilus/scripts/
   chmod +x ~/.local/share/nautilus/scripts/SetAsWallpaper
+
+  # Make directory $cache_dir
+  if [ ! -d "$cache_dir" ]; then
+    mkdir -p "$cache_dir"
+  fi
 
   # Fonts install
   log_info "Copy fonts:                 \".fonts\" -> \"$HOME/\"\n"
