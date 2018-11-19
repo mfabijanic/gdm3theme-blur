@@ -37,7 +37,6 @@ convert_picture() {
   if [[ $gui -eq 1 ]]; then
     ( $sudo convert -blur ${blur_geometry} "${src_picture}" "${dst_picture}" ) \
       | zenity --progress --pulsate --auto-close --no-cancel --title="Image Converter" --text="Making blurry picture: ${dst_picture}" 2>/dev/null
-    [ $? -eq -1 ] && zenity --error --text="Image Converter canceled."
     convert_status=$?
   else
     $sudo convert -blur ${blur_geometry} "${src_picture}" "${dst_picture}"
